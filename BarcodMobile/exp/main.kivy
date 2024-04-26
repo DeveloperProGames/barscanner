@@ -1,0 +1,44 @@
+<WindowManager>
+    RegistScreen:
+        name: "Regist"
+    ScrollableWindowScreen:
+        name: "ScrollableWindow"
+
+<Label>:
+    size_hint: 1, None
+    height: 40
+
+<RegistScren>
+    BoxLayout:
+        orientation: "vertical"
+        Button:
+            text: "Camera"
+            on_release: app.root.current = 'ScrollableWindow'
+
+<ScrollableWindowScreen>:
+    ScrollView:
+        image: img
+
+        BoxLayout:
+            size: root.width, root.height
+            size_hint_y: None
+            height: self.minimum_height
+            orientation: "vertical"
+            id: labels_box
+
+            BoxLayout:
+                size_hint_y: None
+                height: self.minimum_height
+                orientation: "vertical"
+
+                Image:
+                    id: img
+                    size_hint_x: 1
+                    size_hint_y: None
+                    height: self.width / img.image_ratio
+                    allow_stretch: True
+                    keep_ratio: False
+
+            Button:
+                text: "Clear Labels"
+                on_press: root.clear_labels()

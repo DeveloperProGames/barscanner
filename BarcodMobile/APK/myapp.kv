@@ -1,0 +1,53 @@
+
+<WindowManager>:
+    StartScreen:
+        name: "Start"
+    CameraScreen:
+    	name: "Camera"
+
+<CameraScreen>
+	ScrollView:
+        BoxLayout:
+	        size: root.width, root.height
+	        size_hint_y: None
+	        height: self.minimum_height
+	        orientation: "vertical"
+
+            BoxLayout:
+	            size_hint_y: None
+	            height: self.minimum_height
+	            orientation: "vertical"
+
+	            Image:
+	                id: image
+	                size_hint_x: 1
+	                size_hint_y: None
+	                height: self.width / image.image_ratio
+	                allow_stretch: True
+	                keep_ratio: False
+	        Button:
+	        	text: "Button1"
+	        Button:
+	        	text: "Button2"
+
+<StartScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+
+        TextInput:
+        	id: camera_id
+        	multiline: 'False'
+
+        GridLayout:
+        	cols: 2
+	        Button:
+	            text: "int"
+	            on_press: root.integer()
+	            on_release: app.root.current = 'Camera'
+	        Button:
+	        	text: "str"
+	        	on_press: root.stringer()
+	        	on_release: app.root.current = 'Camera'
+        Button:
+            text: "Sound play"
+            on_release: root.sound_clic()
